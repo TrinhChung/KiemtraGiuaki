@@ -1,0 +1,43 @@
+#include<iostream>
+#include<math.h>
+#include<vector>
+#define MAX 10000
+using namespace std;
+int a[MAX]={};
+bool songuyento(int n){
+    bool check=true;
+    for(int i=2;i<=sqrt(n);i++){
+         if(n%i==0){
+            check=false;
+            break;
+         }
+    }
+    return check;
+}
+void ntArry(int n,int& t){
+    for(int i=2;i<=n;i++){
+        if(songuyento(i)){
+            a[t]=i;
+            t++;
+        }
+    }
+}
+int main(){
+   int n;
+   cin >>n;
+   int t=0;
+   int b[n];
+   for(int i=0;i<n;i++){
+        b[i]=0;
+   }
+   ntArry(n,t);
+    for(int i=0;i<=t;i++){
+        while(n%a[i]==0){
+            b[a[i]]++;
+            n=n/a[i];
+         }
+         if(b[a[i]]>0){
+        cout <<a[i]<<" "<<b[a[i]]<<endl;
+    }
+   }
+}
