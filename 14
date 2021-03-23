@@ -1,0 +1,39 @@
+#include<iostream>
+#include<string>
+int a[100]={-1};
+using namespace std;
+bool check(int x,int j){
+    for(int i=1;i<x;i++){
+        if(a[i]==j) return false;
+    }
+    return true;
+}
+void xuat(int n,string s){
+    for(int i=1;i<=n;i++){
+        cout <<s[a[i]];
+    }
+    cout <<endl;
+}
+void daoxau(int x,int n,int t,string s){
+     for(int i=x;i<=n;i++){
+        a[i]=-1;
+     }
+       for(int i=0;i<t;i++){
+          if(check(x,i)){
+            a[x]=i;
+            if(x==n){xuat(n,s);}
+            else{
+                daoxau(x+1,n,t,s);
+            }
+          }
+   }
+}
+int main(){
+    int n;
+    cin >>n;
+    string s;
+    cin >>s;
+    int t=s.size();
+    for(int i=1;i<=n;i++){
+    daoxau(1,i,t,s);}
+}
